@@ -48,6 +48,8 @@ syn match tmpl_var +[\_[:alnum:]]\+\ze\%(\s\|"\|>\)+ contained nextgroup=tmpl_do
 syn match tmpl_dot "\." contained nextgroup=tmpl_var
 syn match tmpl_tag "\c</TMPL_\w\+>"
 syn match tmpl_comment "\%(^\s*\)\@<=#.*" contains=perlTodo,@Spell
+"syn match tmpl_prefix "\c\%([</]\)\@<=TMPL_" contained
+syn keyword tmpl_prefix TMPL_
 
 syn cluster tmpl_top contains=tmpl_open_tag,tmpl_include,tmpl_block_comment,tmpl_tag
 syn cluster htmlTop add=tmpl_comment
@@ -60,6 +62,8 @@ hi link tmpl_comment        perlComment
 hi link tmpl_block_comment  perlComment
 hi link tmpl_var            perlIdentifier
 hi link tmpl_dot            perlOperator
+" dim the TMPL_ prefix
+hi link tmpl_prefix         perlComment
 
 let b:current_syntax = "tmpl"
 if main_syntax == "tmpl"

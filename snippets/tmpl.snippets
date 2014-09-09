@@ -1,0 +1,19 @@
+# {{variable}}
+snippet v
+	<TMPL_VAR ${1}>
+# {{! comments }}
+snippet c
+	{{! ${1:comments} }}
+
+snippet loop 
+	<TMPL_LOOP ${1:data}>
+		${2}
+	</TMPL_LOOP>
+
+snippet if
+	<TMPL_IF ${1:data}>
+		${2}
+	</TMPL_IF>
+
+snippet set
+	<TMPL_SETVAR ${1:data}> ${2} </TMPL_SETVAR>
